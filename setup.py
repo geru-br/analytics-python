@@ -28,7 +28,7 @@ setup(
     author_email='friends@segment.com',
     maintainer='Segment',
     maintainer_email='friends@segment.com',
-    test_suite='analytics.test.all',
+    test_suite='geru.ccdf.test.all',
     packages=find_packages(),
     #namespace_packages=['geru'],
     license='MIT License',

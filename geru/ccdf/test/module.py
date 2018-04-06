@@ -1,6 +1,6 @@
 import unittest
 
-import analytics
+import geru.ccdf
 
 
 class TestModule(unittest.TestCase):
@@ -10,40 +10,40 @@ class TestModule(unittest.TestCase):
 
     def setUp(self):
         self.failed = False
-        analytics.write_key = 'testsecret'
-        analytics.on_error = self.failed
+        geru.ccdf.write_key = 'testsecret'
+        geru.ccdf.on_error = self.failed
 
     def test_no_write_key(self):
-        analytics.write_key = None
-        self.assertRaises(Exception, analytics.track)
+        geru.ccdf.write_key = None
+        self.assertRaises(Exception, geru.ccdf.track)
 
     def test_no_host(self):
-        analytics.host = None
-        self.assertRaises(Exception, analytics.track)
+        geru.ccdf.host = None
+        self.assertRaises(Exception, geru.ccdf.track)
 
     def test_track(self):
-        analytics.track('userId', 'python module event')
-        analytics.flush()
+        geru.ccdf.track('userId', 'python module event')
+        geru.ccdf.flush()
 
     def test_identify(self):
-        analytics.identify('userId', { 'email': 'user@email.com' })
-        analytics.flush()
+        geru.ccdf.identify('userId', { 'email': 'user@email.com' })
+        geru.ccdf.flush()
 
     def test_group(self):
-        analytics.group('userId', 'groupId')
-        analytics.flush()
+        geru.ccdf.group('userId', 'groupId')
+        geru.ccdf.flush()
 
     def test_alias(self):
-        analytics.alias('previousId', 'userId')
-        analytics.flush()
+        geru.ccdf.alias('previousId', 'userId')
+        geru.ccdf.flush()
 
     def test_page(self):
-        analytics.page('userId')
-        analytics.flush()
+        geru.ccdf.page('userId')
+        geru.ccdf.flush()
 
     def test_screen(self):
-        analytics.screen('userId')
-        analytics.flush()
+        geru.ccdf.screen('userId')
+        geru.ccdf.flush()
 
     def test_flush(self):
-        analytics.flush()
+        geru.ccdf.flush()

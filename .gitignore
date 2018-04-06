@@ -8,3 +8,4 @@ build
 .eggs
 .autoenv
 .DS_Store
+.pytest_cache
