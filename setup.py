@@ -1,15 +1,8 @@
-
 import os
 import sys
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
 
-# Don't import analytics-python module here, since deps may not be installed
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics'))
-from version import VERSION
+from setuptools import setup, find_packages
 
 long_description = '''
 Segment is the simplest way to integrate analytics into your application.
@@ -28,15 +21,16 @@ install_requires = [
 ]
 
 setup(
-    name='analytics-python',
-    version=VERSION,
+    name='geru.ccdf',
+    version='0.0.1',
     url='https://github.com/segmentio/analytics-python',
     author='Segment',
     author_email='friends@segment.com',
     maintainer='Segment',
     maintainer_email='friends@segment.com',
     test_suite='analytics.test.all',
-    packages=['analytics', 'analytics.test'],
+    packages=find_packages(),
+    #namespace_packages=['geru'],
     license='MIT License',
     install_requires=install_requires,
     description='The hassle-free way to integrate analytics into any python application.',
@@ -48,7 +42,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.2",

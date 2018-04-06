@@ -7,9 +7,8 @@ import atexit
 from dateutil.tz import tzutc
 from six import string_types
 
-from analytics.utils import guess_timezone, clean
-from analytics.consumer import Consumer
-from analytics.version import VERSION
+from geru.ccdf.utils import guess_timezone, clean
+from geru.ccdf.consumer import Consumer
 
 try:
     import queue
@@ -203,7 +202,7 @@ class Client(object):
         msg['messageId'] = str(uuid4())
         msg['context']['library'] = {
             'name': 'analytics-python',
-            'version': VERSION
+            'version': '0.0.1'
         }
 
         msg['userId'] = stringify_id(msg.get('userId', None))

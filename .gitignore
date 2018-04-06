@@ -6,3 +6,5 @@ dist
 MANIFEST
 build
 .eggs
+.autoenv
+.DS_Store
