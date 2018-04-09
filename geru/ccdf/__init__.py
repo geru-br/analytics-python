@@ -55,6 +55,7 @@ def join():
 
 def _proxy(method, *args, **kwargs):
     """Create an analytics client if one doesn't exist and send to it."""
+    import ipdb; ipdb.set_trace()
     global default_client
     if not default_client:
         default_client = Client(write_key, host=host, debug=debug, on_error=on_error,

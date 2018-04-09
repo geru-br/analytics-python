@@ -16,10 +16,10 @@ def post(write_key, host=None, **kwargs):
     log = logging.getLogger('segment')
     body = kwargs
     body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
-    url = remove_trailing_slash(host or 'https://api.segment.io') + '/v1/batch'
+    url = remove_trailing_slash(host or 'https://hvk4w82zel.execute-api.us-east-1.amazonaws.com/production') + '/v1/batch'
     auth = HTTPBasicAuth(write_key, '')
     data = json.dumps(body, cls=DatetimeSerializer)
-    headers = { 'content-type': 'application/json' }
+    headers = {'content-type': 'application/json'}
     log.debug('making request: %s', data)
     res = _session.post(url, data=data, auth=auth, headers=headers, timeout=15)
 
