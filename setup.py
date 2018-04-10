@@ -20,6 +20,14 @@ install_requires = [
     "python-dateutil>2.1"
 ]
 
+test_require = [
+    'pytest',
+    'pytest-cov',
+    'pyramid',
+    'celery'
+]
+
+
 setup(
     name='geru.ccdf',
     version='0.0.1',
@@ -30,9 +38,11 @@ setup(
     maintainer_email='friends@segment.com',
     test_suite='geru.ccdf.test.all',
     packages=find_packages(),
-    #namespace_packages=['geru'],
     license='MIT License',
     install_requires=install_requires,
+    extras_require={
+        'test': test_require,
+    },
     description='The hassle-free way to integrate analytics into any python application.',
     long_description=long_description,
     classifiers=[
