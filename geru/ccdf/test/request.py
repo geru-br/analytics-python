@@ -22,7 +22,7 @@ class TestRequests(unittest.TestCase):
         self.assertRaises(Exception, post, 'testsecret', 'api.segment.io/', batch=[])
 
     def test_datetime_serialization(self):
-        data = { 'created': datetime(2012, 3, 4, 5, 6, 7, 891011) }
+        data = {'created': datetime(2012, 3, 4, 5, 6, 7, 891011)}
         result = json.dumps(data, cls=DatetimeSerializer)
         self.assertEqual(result, '{"created": "2012-03-04T05:06:07.891011"}')
 

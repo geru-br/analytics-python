@@ -12,7 +12,7 @@ from geru.ccdf import join as actual_join
 
 
 @shared_task(bind=True, queue='geru.ccdf')
-def tract(self, *args, **kwargs):
+def track(self, *args, **kwargs):
     """Send a track call."""
     actual_track(*args, **kwargs)
 

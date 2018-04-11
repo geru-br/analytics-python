@@ -24,7 +24,8 @@ test_require = [
     'pytest',
     'pytest-cov',
     'pyramid',
-    'celery'
+    'celery',
+    'redis',
 ]
 
 
