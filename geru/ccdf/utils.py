@@ -8,6 +8,8 @@ import six
 
 log = logging.getLogger('segment')
 
+testing_log = logging.getLogger('ccdf_testing')
+
 
 def is_naive(dt):
     """Determines if a given datetime.datetime is naive."""

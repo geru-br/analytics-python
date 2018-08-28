@@ -1,5 +1,7 @@
 
 from geru.ccdf.client import Client
+from geru.ccdf.utils import testing_log
+
 
 __version__ = '0.0.1'
 
@@ -8,9 +10,11 @@ write_key = None
 host = None
 on_error = None
 debug = False
+testing = False
 send = True
 
 default_client = None
+
 
 
 def track(*args, **kwargs):
@@ -53,7 +57,15 @@ def join():
     _proxy('join')
 
 
-def _proxy(method, *args, **kwargs):
+def _proxy(*args, **kwargs):
+    if testing:
+        return _testing_proxy(*args, **kwargs)
+
+    else:
+        return _client_proxy(*args, **kwargs)
+
+
+def _client_proxy(method, *args, **kwargs):
     """Create an analytics client if one doesn't exist and send to it."""
     global default_client
     if not default_client:
@@ -62,3 +74,8 @@ def _proxy(method, *args, **kwargs):
 
     fn = getattr(default_client, method)
     fn(*args, **kwargs)
+
+
+def _testing_proxy(method, *args, **kwargs):
+    """Save analytics data to log instead of analytics client."""
+    testing_log.debug("%s, %r, %r", method, args, kwargs)

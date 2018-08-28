@@ -13,6 +13,7 @@ _session = sessions.Session()
 
 def post(write_key, host=None, **kwargs):
     """Post the `kwargs` to the API"""
+
     log = logging.getLogger('segment')
     body = kwargs
     body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
