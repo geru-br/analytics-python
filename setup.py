@@ -41,9 +41,6 @@ setup(
     packages=find_packages(),
     license='MIT License',
     install_requires=install_requires,
-    extras_require={
-        'test': test_require,
-    },
     description='The hassle-free way to integrate analytics into any python application.',
     long_description=long_description,
     classifiers=[
