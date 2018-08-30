@@ -11,7 +11,7 @@ jobs:
           name: install dependencies
           command: |
             virtualenv venv
-          /home/circleci/repo/venv/bin/pip install -e .[testing]
+            /home/circleci/repo/venv/bin/pip install -e .[testing]
       - run:
           name: run tests
           command: |
