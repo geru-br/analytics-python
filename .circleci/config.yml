@@ -1,0 +1,48 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/python:2.7.13
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: install dependencies
+          command: |
+            virtualenv venv
+          /home/circleci/repo/venv/bin/pip install -e .[testing]
+      - run:
+          name: run tests
+          command: |
+            source venv/bin/activate
+            pytest -s geru/ccdf/test
+
+
+  deploy:
+    docker:
+      - image: circleci/python:2.7.13
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          name: build and upload to geru-pypi
+          command: |
+            python setup.py sdist
+            virtualenv venv
+            ./venv/bin/pip install twine
+            ./venv/bin/twine upload --repository-url https://geru-pypi.geru.com.br/ dist/*
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
