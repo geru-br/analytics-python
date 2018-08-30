@@ -10,3 +10,7 @@ build
 .DS_Store
 .pytest_cache
 .coverage
+
+
+# emacs backup files
+*~
