@@ -3,7 +3,7 @@ from geru.ccdf.client import Client
 from geru.ccdf.utils import testing_log
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 """Settings."""
 write_key = None
