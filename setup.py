@@ -31,7 +31,7 @@ test_require = [
 
 setup(
     name='geru.ccdf',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/segmentio/analytics-python',
     author='Segment',
     author_email='friends@segment.com',
