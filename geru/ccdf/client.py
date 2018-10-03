@@ -37,6 +37,13 @@ class Client(object):
         if debug:
             self.log.setLevel(logging.DEBUG)
 
+        self.log.info("Initializing CCDF client with host={}, debug={}, write_key={}"
+                      .format(
+                          host, debug, write_key[:3] + ('*' * (len(write_key) - 3))
+                      )
+        )
+
+
         # if we've disabled sending, just don't start the consumer
         if send:
             # On program exit, allow the consumer thread to exit cleanly.
