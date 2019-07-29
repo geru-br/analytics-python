@@ -3,10 +3,10 @@
 from pyramid.settings import asbool
 
 
-def includeme(settings):
+def includeme(config):
     import geru.ccdf
-    geru.ccdf.write_key = settings.get_settings().get('geru.ccdf.write_key')
-    geru.ccdf.host = settings.get_settings().get('geru.ccdf.host')
-    geru.ccdf.debug = asbool(settings.get_settings().get('geru.ccdf.debug'))
+    geru.ccdf.write_key = config.get_settings().get('geru.ccdf.write_key')
+    geru.ccdf.host = config.get_settings().get('geru.ccdf.host')
+    geru.ccdf.debug = asbool(config.get_settings().get('geru.ccdf.debug'))
 
-    geru.ccdf.testing = asbool(settings.get_settings().get('geru.ccdf.testing'))
+    geru.ccdf.testing = asbool(config.get_settings().get('geru.ccdf.testing'))
