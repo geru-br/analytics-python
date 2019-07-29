@@ -1,4 +1,7 @@
 """Use pyramid configuration to configure client"""
+from __future__ import absolute_import
+# This file is called `pyramid.py` but is trying to import from a global
+# pyramid package below, so we need absolute imports above on Python 2
 
 from pyramid.settings import asbool
 
